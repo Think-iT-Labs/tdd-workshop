@@ -27,10 +27,14 @@ describe("String calculator test", () => {
     expect(sum).to.be.eql(15);
   });
 
-
-
   it("should return the sum of numbers separated by a comma or new line ", () => {
     const sum = add("1,2,3\n4,5");
+
+    expect(sum).to.be.eql(15);
+  });
+
+  it("should return the sum of numbers by a custom delimeter", () => {
+    const sum = add("//;\n1,2;3\n4;5");
 
     expect(sum).to.be.eql(15);
   });
