@@ -3,14 +3,9 @@ export const add = (numbers: string) => {
   if (numbers === "") {
     return 0;
   }
+  
+  const splitter = new RegExp(",|\n")
 
-  const integers = numbers.split(",").map(it => +it);
+  return numbers.split(splitter).map(it => +it).reduce((a,b)=> a+b)
 
-  if (integers.length == 1) {
-    return integers[0];
-  }
-
-  if (integers.length == 2) {
-    return integers[0] + integers[1];
-  }
 };

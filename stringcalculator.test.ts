@@ -19,4 +19,20 @@ describe("String calculator test", () => {
 
     expect(sum).to.be.eql(3);
   });
+
+
+  it("should return the sum of unkownm numbers separated by a comma", () => {
+    const sum = add("1,2,3,4,5");
+
+    expect(sum).to.be.eql(15);
+  });
+
+
+
+  it("should return the sum of numbers separated by a comma or new line ", () => {
+    const sum = add("1,2,3\n4,5");
+
+    expect(sum).to.be.eql(15);
+  });
+  
 })
