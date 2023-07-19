@@ -1,21 +1,21 @@
-### TDD Workshop
+## Password validation
 
-This repo would be used to show examples in our TDD workshop
+I took inspiration from here: https://tddmanifesto.com/exercises/
 
-This setup allows you to use either javsacript or typescript files to run tests in nodeJS using [mocha](https://www.npmjs.com/package/mocha) and [chai](https://www.npmjs.com/package/chai)
+### Kata 3 – Password input field validation
+Create a function that can be used as a validator for the password field of a user registration form. The validation function takes a string as an input and returns a validation result. The validation result should contain a boolean indicating if the password is valid or not, and also a field with the possible validation errors.
 
-### Running the tests
+#### Requirements
+1. The password must be at least 8 characters long. If it is not met, then the following error message should be returned: “Password must be at least 8 characters”
 
-To run the tests for this project, simply run
+2. The password must contain at least 2 numbers. If it is not met, then the following error message should be returned: “The password must contain at least 2 numbers”
 
-```sh
-npm run test
-```
+3. The validation function should handle multiple validation errors.
 
-This runs both your typescript and JS test files.
+For example, “somepassword” should an error message: “Password must be at least 8 characters\nThe password must contain at least 2 numbers”
+4. The password must contain at least one capital letter. If it is not met, then the following error message should be returned: “password must contain at least one capital letter”
 
-Note that all test files must match the pattern `*.test.ts` or `*.test.js`.
+5. The password must contain at least one special character. If it is not met, then the following error message should be returned: “password must contain at least one special character”
 
-### All JS code is in ES5
-
-This setup does not configure the JS files to use es6 `import`. Thus we must use `require` to import our modules in all JS files.
+BONUS STEPS:
+6. The password cannot be the same as the last one.
