@@ -1,33 +1,23 @@
-const convertToNumbers = (numbers: string) => {
-  let splitter;
-  if (numbers.startsWith("//")) {
-    const delimeter = numbers.substring(2, 3);
-    splitter = new RegExp(`,|\n|${delimeter}`);
-    numbers = numbers.substring(4);
-  } else splitter = new RegExp(`,|\n`);
+export const passwordValidator = (password:string )=> { 
 
-  return numbers.split(splitter);
-};
-
-export const add = (stringNumbers: string) => {
-  if (stringNumbers === "") {
-    return 0;
+  const numberRegex = /\d/g;
+  if(password.length <8) 
+  return {
+    isValid: false,
+    errors : ["Password must be at least 8 characters"]
   }
-
-  let numbers = convertToNumbers(stringNumbers);
-
-  const negatives: number[] = [];
-  
-  const total = numbers
-    .map((it) => {
-      const digit = +it;
-      if (digit < 0) negatives.push(digit);
-      return digit;
-    })
-    .reduce((a, b) => a + b);
-
-  if (negatives.length)
-    throw new Error(`negatives not allowed:${negatives.join(",")}`);
-
-  return total;
-};
+  else 
+  { 
+   const numbers=  password.match(numberRegex)
+   if(numbers && numbers?.length <  2 ) { 
+    return {
+      isValid: false,
+      errors : ["The password must contain at least 2 numbers"]
+    }
+   }
+  }
+return {
+  isValid: true,
+  errors:[]
+} 
+}
