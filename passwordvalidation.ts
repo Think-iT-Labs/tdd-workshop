@@ -1,23 +1,17 @@
-export const passwordValidator = (password:string )=> { 
-
+export const passwordValidator = (password: string) => {
   const numberRegex = /\d/g;
-  if(password.length <8) 
+  const numbers = password.match(numberRegex)?.length || 0;
+  const errors = [];
+
+  if (password.length < 8)
+    errors.push("Password must be at least 8 characters");
+
+  if (numbers < 2)
+    errors.push("The password must contain at least 2 numbers");
+
+  
   return {
-    isValid: false,
-    errors : ["Password must be at least 8 characters"]
-  }
-  else 
-  { 
-   const numbers=  password.match(numberRegex)
-   if(numbers && numbers?.length <  2 ) { 
-    return {
-      isValid: false,
-      errors : ["The password must contain at least 2 numbers"]
-    }
-   }
-  }
-return {
-  isValid: true,
-  errors:[]
-} 
-}
+    isValid: errors.length == 0,
+    errors,
+  };
+};

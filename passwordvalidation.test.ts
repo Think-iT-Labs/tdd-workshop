@@ -22,8 +22,21 @@ describe("Password validation tests", () => {
     const result = passwordValidator("fdkjkhd1")
     expect(result.isValid).to.be.false
     expect(result.errors).to.contain("The password must contain at least 2 numbers")
+  })
 
+  it("should return a list of errors if validation rules are not met", () => {
+    const result = passwordValidator("some2")
 
+    expect(result.isValid).to.be.false
+    expect(result.errors).to.contain("Password must be at least 8 characters")
+    expect(result.errors).to.contain("The password must contain at least 2 numbers")
+  })
+
+  it("should failed when the password doesn't have any number", () => {
+    const result = passwordValidator("some")
+
+    expect(result.isValid).to.be.false
+    expect(result.errors).to.contain("The password must contain at least 2 numbers")
   })
  
   
