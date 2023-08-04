@@ -4,9 +4,9 @@ import { passwordValidator } from "./passwordvalidation";
 describe("Password validation tests", () => {
   it("it should be at least 8 characters", () => {
 
-    const result =passwordValidator("12345678")
-    expect(result.isValid).to.be.true
+    const result =passwordValidator("1234567_")
     expect(result.errors).to.be.empty
+    expect(result.isValid).to.be.true
 
   });
 
@@ -37,6 +37,13 @@ describe("Password validation tests", () => {
 
     expect(result.isValid).to.be.false
     expect(result.errors).to.contain("The password must contain at least 2 numbers")
+  })
+
+  it("should contain at least one special character", ()=> {
+    const result =passwordValidator("12345678")
+    expect(result.isValid).to.be.false
+    expect(result.errors).to.contain("The password must contain at least one special character")
+
   })
  
   
