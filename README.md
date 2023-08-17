@@ -38,18 +38,16 @@ it should return 200 with the response:
 }
 ```
 
-2. validation rule: password cannot be one of "Password123!"
-
-3. add an endopoint to specify illegal passwords: `PUT /password/illegal`, that could be taken from a common passwords dictionary. The body should be in the form of:
+2. add an endopoint to specify illegal passwords: `PUT /password/illegal`, that could be taken from a common passwords dictionary. The body should be in the form of:
 ```json
 {
   "passwords": ["illegal1", "illegal2", ...]
 }
 ```
 
-4. introduce a persistent store for illegal passwords.
+3. introduce a persistent store for illegal passwords.
 
-5. Add the possibility to specify, instead of a list of illegal passwords, an url pointing to a file containing a list of well-known passwords (e.g. https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/cirt-default-passwords.txt). The body of the `PUT /password/illegal` call will be:
+4. Add the possibility to specify, instead of a list of illegal passwords, an url pointing to a file containing a list of well-known passwords (e.g. https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/cirt-default-passwords.txt). The body of the `PUT /password/illegal` call will be:
 ```json
 {
   "url": "https://example.com/passwords.txt"
