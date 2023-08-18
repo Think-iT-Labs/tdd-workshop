@@ -44,3 +44,15 @@ describe("password validation endpoint", () => {
       });
   });
 });
+
+
+describe("illegal passwords endpoint", () => {
+  it("should respond with 200", () => {
+    chai.request(app)
+    .put('/password/illegal')
+    .send({passwords: []}).end((error, response) => {
+      expect(response.ok).to.be.true;
+      expect(response.statusCode).to.be.equal(204);
+    })
+  })
+})

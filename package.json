@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.ts",
     "test": "mocha -r ts-node/register '**/*.test.{js,ts}'"
   },
   "keywords": [],
