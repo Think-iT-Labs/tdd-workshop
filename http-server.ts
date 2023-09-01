@@ -1,21 +1,19 @@
 import express from "express";
-import { passwordValidator } from "./passwordvalidation";
-
+import { PasswordValidator } from "./passwordvalidation";
 
 export const app = express();
-app.use(express.json())
+app.use(express.json());
 
-app.post('/password/validation', (req, res: any) => {
-
-  const response = passwordValidator(req.body.password);
+app.post("/password/validation", (req, res: any) => {
+  const passwordValidateObj = new PasswordValidator();
+  const response = passwordValidateObj.validate(req.body.password);
 
   res.send({
     valid: response.isValid,
-    messages: response.errors
+    messages: response.errors,
   });
 });
 
-app.put('/password/illegal', (req, res: any) => {
-
-  res.status(204).send()
+app.put("/password/illegal", (req, res: any) => {
+  res.status(204).send();
 });
