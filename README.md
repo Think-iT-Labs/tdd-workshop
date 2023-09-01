@@ -45,9 +45,10 @@ it should return 200 with the response:
 }
 ```
 
-3. introduce a persistent store for illegal passwords.
+Once a password is set as illegal, every call to the `/password/validation` with one of the illegal passwords
+should return not valid with the message: "The password is illegal as too common".
 
-4. Add the possibility to specify, instead of a list of illegal passwords, an url pointing to a file containing a list of well-known passwords (e.g. https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/cirt-default-passwords.txt). The body of the `PUT /password/illegal` call will be:
+3. Add the possibility to specify, instead of a list of illegal passwords, an url pointing to a file containing a list of well-known passwords (e.g. https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/cirt-default-passwords.txt). The body of the `PUT /password/illegal` call will be:
 ```json
 {
   "url": "https://example.com/passwords.txt"
