@@ -4,8 +4,9 @@ import { PasswordValidator } from "./passwordvalidation";
 export const app = express();
 app.use(express.json());
 
+const passwordValidateObj = new PasswordValidator();
+
 app.post("/password/validation", (req, res: any) => {
-  const passwordValidateObj = new PasswordValidator();
   const response = passwordValidateObj.validate(req.body.password);
 
   res.send({
@@ -15,5 +16,7 @@ app.post("/password/validation", (req, res: any) => {
 });
 
 app.put("/password/illegal", (req, res: any) => {
+  passwordValidateObj.setIllegalPasswords(req.body.passwords);
+
   res.status(204).send();
 });
