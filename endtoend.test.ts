@@ -88,4 +88,38 @@ describe("illegal passwords endpoint", () => {
       "The password is illegal as too common",
     ]);
   });
+
+  it("should make passwords illegal from a url", async () => {
+    const TEXT_FILE = `
+PORTAL30_SSO_PUBLIC
+PORTAL30_PUBLIC
+`;
+
+    const response = await chai.request(app).put("/password/illegal").send({
+      url: "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/cirt-default-passwords.txt",
+    });
+
+    expect(response.ok).to.be.true;
+    expect(response.statusCode).to.be.equal(204);
+
+    const response2 = await chai
+      .request(app)
+      .post("/password/validation")
+      .send({ password: "PORTAL30_SSO_PUBLIC" });
+    expect(response2.ok).to.be.true;
+    expect(response2.body.valid).to.be.false;
+    expect(response2.body.messages).to.contain(
+      "The password is illegal as too common"
+    );
+
+    const response3 = await chai
+      .request(app)
+      .post("/password/validation")
+      .send({ password: "PORTAL30_PUBLIC" });
+    expect(response3.ok).to.be.true;
+    expect(response3.body.valid).to.be.false;
+    expect(response3.body.messages).to.contain(
+      "The password is illegal as too common"
+    );
+  });
 });

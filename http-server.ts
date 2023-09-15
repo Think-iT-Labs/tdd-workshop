@@ -15,8 +15,18 @@ app.post("/password/validation", (req, res: any) => {
   });
 });
 
-app.put("/password/illegal", (req, res: any) => {
-  passwordValidateObj.setIllegalPasswords(req.body.passwords);
+app.put("/password/illegal", async (req, res: any) => {
+  if (req.body.passwords) {
+    passwordValidateObj.setIllegalPasswords(req.body.passwords);
 
-  res.status(204).send();
+    return res.status(204).send();
+  }
+
+  const url = req.body.url;
+  const res1 = await fetch(url);
+  const passwordStr = await res1.text();
+  const passwordsFromUpstream = passwordStr.split("\n");
+
+  passwordValidateObj.setIllegalPasswords(passwordsFromUpstream);
+  return res.status(204).send();
 });
