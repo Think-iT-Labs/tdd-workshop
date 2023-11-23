@@ -1,10 +1,5 @@
 fn fizz() -> Vec<String> {
-    let mut numbers = vec![1; 100];
-    for num in 0..99 {
-        numbers[num] += num
-    }
-
-    return numbers.iter()
+    return (1..=100)
         .map(|n| {
             if n % 3 == 0 && n % 5 == 0 { String::from("fizzbuzz") }
             else if n % 3 == 0 { String::from("fizz") }
