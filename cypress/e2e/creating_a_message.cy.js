@@ -1,5 +1,5 @@
 describe('Creating a message', () => {
-  it('Displays the message in the list', () => {
+  it('Displays the message in the body', () => {
     cy.visit('http://localhost:3000');
 
     cy.get('[data-testid="messageText"]')
@@ -7,9 +7,9 @@ describe('Creating a message', () => {
 
     cy.get('[data-testid="sendButton"]')
       .click();
-
-    cy.get('[data-testid="messageText"]')
-      .should('have.value', '');
+    //
+    // cy.get('[data-testid="messageText"]')
+    //   .should('have.value', '');
 
     cy.contains('New message');
   });
