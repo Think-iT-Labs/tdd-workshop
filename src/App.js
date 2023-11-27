@@ -1,17 +1,29 @@
-import {useState} from 'react';
+import { useState } from "react";
 
 export default function App() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
+  const [inputText, setInputText] = useState("");
 
   function handleTextChange(event) {
-    setMessage(event.target.value)
+    setInputText(event.target.value);
   }
 
+  function handleSubmit() {
+    setMessage(inputText);
+    setInputText("");
+  }
   return (
     <>
-      <input type="text" data-testid="messageText" onChange={handleTextChange} />
-      <button data-testid="sendButton"/>
-      {message}
+      <input
+        type="text"
+        data-testid="messageText"
+        onChange={handleTextChange}
+        value={inputText}
+      />
+      <button onClick={handleSubmit} data-testid="sendButton">
+        Submit
+      </button>
+      <div>{message}</div>
     </>
   );
 }
