@@ -1,21 +1,36 @@
-### TDD Workshop
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This repo would be used to show examples in our TDD workshop
+## Getting Started
 
-This setup allows you to use either javsacript or typescript files to run tests in nodeJS using [mocha](https://www.npmjs.com/package/mocha) and [chai](https://www.npmjs.com/package/chai)
+First, run the development server:
 
-### Running the tests
-
-To run the tests for this project, simply run
-
-```sh
-npm run test
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-This runs both your typescript and JS test files.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Note that all test files must match the pattern `*.test.ts` or `*.test.js`.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### All JS code is in ES5
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-This setup does not configure the JS files to use es6 `import`. Thus we must use `require` to import our modules in all JS files.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
