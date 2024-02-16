@@ -37,4 +37,20 @@ describe("Login", () => {
 
     expect(loginButton).not.toHaveAttribute("disabled");
   });
+
+  it("should be fire an event", () => {
+    const onLogin = jest.fn();
+    render(<Sample onLogin={onLogin}/>);
+
+    const usernameInput = screen.getByTestId("username-input");
+    const passwordInput = screen.getByTestId("password-input");
+    const loginButton = screen.getByRole("button", { name: "Login" });
+
+    fireEvent.change(usernameInput, { target: { value: "username" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
+
+    fireEvent.click(loginButton);
+
+    expect(onLogin).toHaveBeenCalled();
+  });
 });

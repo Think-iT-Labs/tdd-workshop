@@ -1,12 +1,12 @@
 "use client"
 import { useState } from "react";
 
-export const Sample = () => {
+export const Sample = ({ onLogin = () => {} }) => {
   const [disabled, setDisabled] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <form className="text-black">
+    <div>
       <input
         data-testid="username-input"
         type="text"
@@ -21,9 +21,9 @@ export const Sample = () => {
           setPassword(e.target.value);
         }}
       />
-      <button className="text-white" name="Login" disabled={!username && !password}>
+      <button className="text-white" name="Login" disabled={!username && !password} onClick={onLogin}>
         Login
       </button>
-    </form>
+    </div>
   );
 };
