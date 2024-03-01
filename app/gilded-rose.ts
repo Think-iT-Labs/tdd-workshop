@@ -62,6 +62,9 @@ export class GildedRose {
           }
         }
       }
+      if (this.items[i].quality < 0) {
+        this.items[i].quality = 0
+      }
     }
 
     return this.items;

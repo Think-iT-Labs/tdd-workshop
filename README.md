@@ -14,6 +14,7 @@ we can begin selling a new category of items. First an introduction to our syste
 
 Pretty simple, right? Well this is where it gets interesting:
 
+- If the input of the Quality is negative, the `UpdateQuality` function should ruturn Quality of 0
 - Once the sell by date has passed, `Quality` degrades twice as fast
 - The `Quality` of an item is never negative
 - __"Aged Brie"__ actually increases in `Quality` the older it gets
